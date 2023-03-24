@@ -8,23 +8,6 @@ const web3 = createAlchemyWeb3(alchemyKey);
 const contractABI = require('../contract-abi.json')
 const contractAddress = "0x97A3De533E6140Bdb9c5BEC7B23477ac3a48953e";
 
-//make metadata
-const metadata = new Object();
-metadata.name = name;
-metadata.image = url;
-metadata.description = description;
-
-//make pinata call
-const pinataResponse = await pinJSONToIPFS(metadata);
-if (!pinataResponse.success) {
-    return {
-        success: false,
-        status: "😢 Something went wrong while uploading your tokenURI.",
-    }
-}
-
-const tokenURI = pinataResponse.pinataUrl;
-
 export const connectWallet = async () => {
   if (window.ethereum) {
     try {

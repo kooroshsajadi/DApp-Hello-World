@@ -47,7 +47,7 @@ export const connectWallet = async () => {
 export const mintNFT = async(url, name, description) => {
 
   //error handling
-  if (url.trim() == "" || (name.trim() == "" || description.trim() == "")) {
+  if (url.trim() === "" || (name.trim() === "" || description.trim() === "")) {
       return {
           success: false,
           status: "❗Please make sure all fields are completed before minting.",
@@ -98,8 +98,6 @@ export const mintNFT = async(url, name, description) => {
       }
   }
 }
-
-window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
 export const getCurrentWalletConnected = async () => {
   if (window.ethereum) {
